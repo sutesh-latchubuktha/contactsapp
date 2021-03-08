@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <script src="https://kit.fontawesome.com/eb2933fee7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+    <h1 id="page-header"> <i class="fas fa-address-book"></i> Contacts Book</h1>
+    <div>
+        <table class="table-container" cellspacing="10">
+            <tr>
+                <th class="left">Name</th>
+                <th>contact</th>
+            </tr>
+            <% for(let i of contacts) {%>
+                <tr>
+                    <td class="left">
+                        <%= i.name%>
+                    </td>
+                    <td>
+                        <%= i.number%>
+                            <a id="delete" href="/delete-contact/?pnumber=<%= i.number %>" class="right">
+                                <i class="fas fa-user-minus">
+                                </i>
+                            </a>
+                    </td>
+                </tr>
+                <%}%>
+        </table>
+    </div>
+    <br>
+    <br>
+    <form action="create-contact" method="post">
+        <label for="fname">Name</label>
+        <input type="text" name="fname" value="" autofocus required>
+        <br>
+        <br>
+        <label for="pnumber">Number</label>
+        <input type="text" value="" name="pnumber" autofocus required>
+        <br>
+        <br>
+        <input id="submit" type="submit" value="Add contact">
+    </form>
+    <script src="js/home.js"></script>
+
+</body>
+
+</html>
